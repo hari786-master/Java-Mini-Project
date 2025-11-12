@@ -19,7 +19,7 @@ class Event implements Serializable {
     ArrayList<Poll> polls;
     ArrayList<Booth> booths;
     ArrayList<Speaker> speakers;
-    int num ;
+    int num;
 
     Event(String name, double budget, Venue venue, String category, LocalDate date) {
         this.name = name;
@@ -57,6 +57,8 @@ class Event implements Serializable {
     void changeVenue(Venue v) {
         venue = v;
     }
+
+    
 
     void addExpense(Expense e) {
         expenses.add(e);

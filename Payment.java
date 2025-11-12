@@ -8,15 +8,15 @@ class Payment {
     String status;
     LocalDateTime timestamp;
 
-    Payment(double amount) {
+    Payment(double price) {
         this.paymentId = UUID.randomUUID().toString();
-        this.amount = amount;
+        this.amount = price;
         this.status = "PENDING";
         this.timestamp = LocalDateTime.now();
     }
 
-    void processPayment() {
-        System.out.println("Processing payment of $" + amount);
+    void processPayment(int count) {
+        System.out.println("Processing payment of $" + (amount*count));
         status = "COMPLETED";
         this.timestamp = LocalDateTime.now();
         System.out.println("Payment successful. Status: " + status);

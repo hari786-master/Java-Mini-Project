@@ -15,6 +15,7 @@ class User implements Serializable {
         this.email = email;
         this.password = password;
         this.role = role;
+        ticket = new ArrayList<>();
     }
 
     boolean checkPassword(String pass) {
@@ -24,5 +25,7 @@ class User implements Serializable {
     void addTicket(Ticket t) {
         ticket.add(t);
     }
+
+  
 
 }
