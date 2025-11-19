@@ -14,8 +14,7 @@ class Report {
     LocalDateTime generatedOn;
 
     public Report(String eventName, double totalRevenue, double totalExpenses,
-            int attendeeCount, double averageRating,
-            ArrayList<String> attendees, ArrayList<String> speakers, ArrayList<String> sponsors) {
+            int attendeeCount, double averageRating, ArrayList<String> speakers, ArrayList<String> sponsors) {
 
         this.eventName = eventName;
         this.totalRevenue = totalRevenue;

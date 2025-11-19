@@ -13,7 +13,7 @@ class Ticket implements Serializable {
     Payment payment;
 
     Ticket(String name, String type, double price) {
-        this.event = event;
+        this.event = name;
         isPaid = false;
         payment = null;
         this.type = type;
@@ -33,6 +33,10 @@ class Ticket implements Serializable {
 
     boolean isPaid() {
         return isPaid;
+    }
+
+    String displayTicket() {
+        return "Event: "+event +"\nType: "+type;
     }
 
 }

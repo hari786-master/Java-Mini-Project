@@ -20,6 +20,7 @@ class Event implements Serializable {
     ArrayList<Booth> booths;
     ArrayList<Speaker> speakers;
     int num;
+    String status;
 
     Event(String name, double budget, Venue venue, String category, LocalDate date) {
         this.name = name;
@@ -58,8 +59,6 @@ class Event implements Serializable {
         venue = v;
     }
 
-    
-
     void addExpense(Expense e) {
         expenses.add(e);
     }
@@ -85,20 +84,27 @@ class Event implements Serializable {
         String yellow = "\033[33m";
 
         // Box borders
-        String line = "┌──────────────────────────────────────────────────┐";
-        String bottom = "└──────────────────────────────────────────────────┘";
-
+        String line = "                                    ┌──────────────────────────────────────────────────┐";
+        String bottom = "                                    └──────────────────────────────────────────────────┘";
+        if (this.date.isAfter(LocalDate.now())) {
+            status = "PENDING";
+        } else if (this.date.isEqual(LocalDate.now())) {
+            status = "LIVE";
+        } else {
+            status = "COMPLETED";
+        }
         String result = "\n" + green + line;
-        result += "\n│                                                  │";
-        result += "\n│                " + bold + red + "   EVENT DETAILS   " + reset + green + "               │";
-        result += "\n│                                                  │" + reset;
-        result += green + "\n│   Name:       " + bold + cyan + name + reset;
-        result += green + "\n│   Category:   " + bold + yellow + category + reset;
-        result += green + "\n│   Location:   " + bold + cyan + venue.name + reset;
-        result += green + "\n│   Date:       " + bold + green + date + reset;
-        result += green + "\n│   Budget:     " + bold + "$" + budget + reset;
-        result += green + "\n│   Event No:   " + bold + num + reset;
-        result += green + "\n│                                                  │";
+        result += "\n                                    │                                                  │";
+        result += "\n                                    │                " + bold + red + "   EVENT DETAILS   " + reset + green + "               │";
+        result += "\n                                    │                                                  │" + reset;
+        result += green + "\n                                    │   Name:       " + bold + cyan + name + reset;
+        result += green + "\n                                    │   Category:   " + bold + yellow + category + reset;
+        result += green + "\n                                    │   Location:   " + bold + cyan + venue.name + reset;
+        result += green + "\n                                    │   Date:       " + bold + green + date + reset;
+        result += green + "\n                                    │   Budget:     " + bold + "$" + budget + reset;
+        result += green + "\n                                    │   Event No:   " + bold + num + reset;
+        result += green + "\n                                    │   Status :    " + bold + status + reset;
+        result += green + "\n                                    │                                                  │";
         result += "\n" + green + bottom + reset;
         return result;
     }

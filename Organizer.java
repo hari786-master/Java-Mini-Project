@@ -15,5 +15,5 @@ public class Organizer implements Serializable {
         events = new ArrayList<>();
     }
 
-    
+
 }

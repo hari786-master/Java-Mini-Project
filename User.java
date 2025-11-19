@@ -26,6 +26,6 @@ class User implements Serializable {
         ticket.add(t);
     }
 
-  
+    
 
 }
